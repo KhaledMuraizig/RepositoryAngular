@@ -1,0 +1,22 @@
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>Warehouse</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let warehouse of warehouses">
+            <td>{{warehouse.name}}</td>
+            <td>{{warehouse.city.name}}</td>
+            <td>{{warehouse.country.name}}</td>
+            <td>
+                <input type="button" value="Delete" class="btn btn-danger" (click)="delete(warehouse.id)"   />
+                <input type="button" value="Edit" class="btn btn-secondary" (click)="edit(warehouse.id,warehouse.city.name,warehouse.country.name)" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+<input type="button" value="New Warehouse" class="btn btn-primary" (click)="newWarehouse()" />

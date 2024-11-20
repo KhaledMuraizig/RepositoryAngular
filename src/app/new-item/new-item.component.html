@@ -1,0 +1,38 @@
+<form [formGroup]="itemForm" >
+    <div class="mb-3">
+        <label  class="form-label">Name</label>
+        <input type="text" class="form-control" formControlName="txtName" placeholder="Item Name">
+        <span *ngIf="itemForm.controls['txtName'].touched && itemForm.hasError('required','txtName')">Please Enter Item Name</span>
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">KU_Code</label>
+        <input type="text" class="form-control" formControlName="txtKU_Code" placeholder="Item KU_Code">
+        <span>*optional</span>
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Qty</label>
+        <input type="text" class="form-control" formControlName="txtQty" placeholder="Item Qty">
+        <span *ngIf="itemForm.controls['txtQty'].touched && itemForm.hasError('required','txtQty')">Please Enter Item Qty</span>
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Cost Price</label>
+        <input type="text" class="form-control" formControlName="txtCostPrice" placeholder="Item Cost Price">
+        <span *ngIf="itemForm.controls['txtCostPrice'].touched && itemForm.hasError('required','txtCostPrice')">Please Enter Item Cost Price</span>
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">MSRP_Price</label>
+        <input type="text" class="form-control" formControlName="txtMSRP_Price" placeholder="Item MSRP_Price">
+        <span *ngIf="itemForm.controls['txtMSRP_Price'].touched && itemForm.hasError('required','txtMSRP_Price')">Please Enter Item MSRP_Price</span>
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Warehouse Name</label>
+        <select  class="form-select" formControlName="ddlWarehouse" >
+            <option *ngFor="let warehouse of warehouses" [value]="warehouse.id">{{warehouse.name}}</option>
+          </select>
+          <span *ngIf="itemForm.controls['ddlWarehouse'].touched && itemForm.hasError('required','ddlWarehouse')">Please Select Warehouse</span>
+      </div>
+    <div class="mb-3">
+        <input *ngIf="!isEdit" type="button" class="btn btn-primary" value="Save" (click)="save()">
+        <input *ngIf="isEdit" type="button" class="btn btn-primary" value="Update" (click)="update()">
+    </div>
+    </form>

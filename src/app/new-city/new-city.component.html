@@ -1,0 +1,19 @@
+<form [formGroup]="cityForm">
+    <div class="mb-3">
+        <label  class="form-label">Name</label>
+        <input type="text" class="form-control" formControlName="txtName" placeholder="City Name">
+        <span *ngIf="cityForm.controls['txtName'].touched && cityForm.hasError('required','txtName')">Please Enter City Name</span>
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Counrty Name</label>
+        <select #countryName class="form-select"  formControlName="ddlcountry" >
+            <option *ngFor="let country of countries" [value]="country.id"  >{{country.name}}</option>
+          </select>
+          <span *ngIf="cityForm.controls['txtName'].touched && cityForm.hasError('required','ddlcountry')">Please Select Country</span>
+      </div>
+      <div class="mb-3">
+        <input *ngIf="!isEdit" type="button" class="btn btn-primary" value="Save" (click)="save()">
+        <input  *ngIf="isEdit" type="button" class="btn btn-primary" value="Update" (click)="update()">
+    </div>
+    </form>
+      

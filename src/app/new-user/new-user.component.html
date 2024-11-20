@@ -1,0 +1,38 @@
+<form [formGroup]="signUpForm">
+    
+    <div class="mb-3">
+        <label  class="form-label">First Name</label>
+        <input type="text" class="form-control" formControlName="txtFName" placeholder="User First Name">
+        <span *ngIf="signUpForm.controls['txtFName'].touched && signUpForm.hasError('required','txtFName')">Please Enter The First Name</span>
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Last Name</label>
+        <input type="text" class="form-control" formControlName="txtLName" placeholder="User Last Name">
+        <span *ngIf="signUpForm.controls['txtLName'].touched && signUpForm.hasError('required','txtLName')">Please Enter The Last Name</span>
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Username</label>
+        <input type="text" class="form-control" formControlName="txtUsername" placeholder="Username">
+        <span *ngIf="signUpForm.controls['txtUsername'].touched && signUpForm.hasError('required','txtUsername')">Please Enter Username</span>
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Email</label>
+        <input type="email" class="form-control" formControlName="txtEmail" placeholder="User Email">
+        <span *ngIf="signUpForm.controls['txtEmail'].touched && signUpForm.hasError('required','txtEmail')">Please Enter Email</span>
+        <span *ngIf="signUpForm.controls['txtEmail'].touched && signUpForm.hasError('email','txtEmail')">Please Enter Correct Email</span>
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Password</label>
+        <input type="password" class="form-control" formControlName="txtPassword" placeholder="User Password">
+        <span *ngIf="signUpForm.controls['txtPassword'].touched && signUpForm.hasError('required','txtPassword')">Please Enter Password</span>
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Role</label>
+        <select class="form-select"  formControlName="ddlRole" >
+            <option *ngFor="let role of roles" [value]="role.name">{{role.name}}</option>
+          </select>
+    </div>
+    <div class="mb-3">
+        <input type="button" class="btn btn-primary" value="Creat Account" (click)="CreatAccount()" >
+    </div>
+</form>

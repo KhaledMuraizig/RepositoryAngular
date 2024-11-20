@@ -1,0 +1,30 @@
+<form [formGroup]="warehouseForm">
+    <div class="mb-3">
+        <label  class="form-label">Name</label>
+        <input type="text" class="form-control" formControlName="txtName" placeholder="Warehouse Name">
+        <span *ngIf="warehouseForm.controls['txtName'].touched && warehouseForm.hasError('required','txtName')">Please Enter Warehouse Name</span>
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Description</label>
+        <input type="text" class="form-control" formControlName="txtDescription" placeholder="Warehouse Description">
+        <span *ngIf="warehouseForm.controls['txtDescription'].touched && warehouseForm.hasError('required','txtDescription')">Please Enter Warehouse Description</span>
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Counrty Name</label>
+        <select #countryName class="form-select"  formControlName="ddlCountry" >
+            <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+          </select>
+          <span *ngIf="warehouseForm.controls['ddlCountry'].touched && warehouseForm.hasError('required','ddlCountry')">Please Select Country</span>
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">City Name</label>
+        <select #cityName class="form-select" formControlName="ddlCity">
+            <option *ngFor="let city of cities" [value]="city.id" >{{city.name}}</option>
+          </select>
+          <span *ngIf="warehouseForm.controls['ddlCity'].touched && warehouseForm.hasError('required','ddlCity')">Please Select City</span>
+    </div>
+    <div class="mb-3">
+        <input *ngIf="!isEdit" type="button" class="btn btn-primary" value="Save" (click)="save()">
+        <input  *ngIf="isEdit" type="button" class="btn btn-primary" value="Update" (click)="update()">
+    </div>
+    </form>

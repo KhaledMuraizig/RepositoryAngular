@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="logInForm">
+          <div class="mb-3">
+              <label  class="form-label">Username</label>
+              <input type="text" class="form-control" formControlName="txtUsername" >
+              <span *ngIf="logInForm.controls['txtUsername'].touched && logInForm.hasError('required','txtUsername')">Please Enter Username</span>
+          </div>
+          <div class="mb-3">
+              <label  class="form-label">Password</label>
+              <input type="password" class="form-control" formControlName="txtPassword" >
+              <span *ngIf="logInForm.controls['txtPassword'].touched && logInForm.hasError('required','txtPassword')">Please Enter Password</span>
+          </div>
+          <div class="mb-3">
+              <input  type="button" class="btn btn-primary" value="LogIn" (click)="logIn()">
+          </div>
+          </form>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,11 @@
+<form [formGroup]="countryForm">
+    <div class="mb-3">
+        <label  class="form-label">Name</label>
+        <input type="text" class="form-control" formControlName="txtnName" placeholder="Country Name">
+        <span *ngIf="countryForm.controls['txtnName'].touched && countryForm.hasError('required','txtnName')">Please Enter Country Name</span>
+    </div>
+    <div class="mb-3">
+        <input *ngIf="!isEdit" type="button" class="btn btn-primary" value="Save" (click)="save()">
+        <input *ngIf="isEdit" type="button" class="btn btn-primary" value="Updata" (click)="update()">
+    </div>
+    </form>
